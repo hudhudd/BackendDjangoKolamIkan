@@ -22,7 +22,8 @@ cryptography==3.4.7
 daphne==2.5.0
 defusedxml==0.7.1
 Django==3.2
-django-allauth==0.45.0
+django-allauth==0.44.0
+django-rest-auth==0.9.5
 django-rest-framework==0.1.0
 djangorestframework==3.12.4
 hiredis==2.0.0
