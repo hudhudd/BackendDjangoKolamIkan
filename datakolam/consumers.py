@@ -15,7 +15,7 @@ class MqttConsumer(SyncConsumer):
         if 'ph' in x:
             # save_model = Datakol(ph=x['ph'],temp=x['temp'],alat=x['alat'],owner=User.objects.get(id=x['owner']))
 
-            save_model = Datakol(ph=x['ph'],temp=x['temp'],alat=False,owner=User.objects.get(id=2))
+            save_model = Datakol(ph=x['ph'],temp=x['temp'],alat=bool(x['alat']),owner=User.objects.get(id=x['owner']))
 
             save_model.save()
             print("topic: {0}, payload: {1}".format(topic, x))
