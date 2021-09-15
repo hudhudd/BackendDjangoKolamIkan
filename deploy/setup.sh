@@ -3,9 +3,9 @@
 set -e
 
 # TODO: Set to URL of git repo.
-PROJECT_GIT_URL='https://github.com/nandastraadi/deploycapstone.git'
+PROJECT_GIT_URL='https://github.com/hudhudd/deploykolamikan.git'
 
-PROJECT_BASE_PATH='/usr/local/apps/deploycapstone'
+PROJECT_BASE_PATH='/usr/local/apps/deploykolamikan'
 
 echo "Installing dependencies..."
 apt-get update
@@ -52,15 +52,15 @@ $PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
 
 
 # Configure supervisor
-cp $PROJECT_BASE_PATH/deploy/supervisor_deploycapstone.conf /etc/supervisor/conf.d/deploycapstone.conf
+cp $PROJECT_BASE_PATH/deploy/supervisor_deploykolamikan.conf /etc/supervisor/conf.d/deploykolamikan.conf
 supervisorctl reread
 supervisorctl update
-supervisorctl restart deploycapstone
+supervisorctl restart deploykolamikan
 
 # Configure nginx
-cp $PROJECT_BASE_PATH/deploy/nginx_deploycapstone.conf /etc/nginx/sites-available/deploycapstone.conf
+cp $PROJECT_BASE_PATH/deploy/nginx_deploykolamikan.conf /etc/nginx/sites-available/deploykolamikan.conf
 rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/deploycapstone.conf /etc/nginx/sites-enabled/deploycapstone.conf
+ln -s /etc/nginx/sites-available/deploykolamikan.conf /etc/nginx/sites-enabled/deploykolamikan.conf
 systemctl restart nginx.service
 
 echo "DONE! :)"
